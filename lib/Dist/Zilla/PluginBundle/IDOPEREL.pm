@@ -12,11 +12,14 @@ use Dist::Zilla::PluginBundle::Classic;
 use Dist::Zilla::PluginBundle::Git;
 use Dist::Zilla::Plugin::MetaJSON;
 use Dist::Zilla::Plugin::MinimumPerl;
-use Dist::Zilla::Plugin::AutoPrereq;
+use Dist::Zilla::Plugin::AutoPrereqs;
 use Dist::Zilla::Plugin::NextRelease;
 use Dist::Zilla::Plugin::GithubMeta;
 use Dist::Zilla::Plugin::TestRelease;
 use Dist::Zilla::Plugin::ReadmeFromPod;
+use Dist::Zilla::Plugin::LoadTests;
+use Dist::Zilla::Plugin::CheckChangesHasContent;
+use Dist::Zilla::Plugin::DistManifestTests;
 
 =head1 NAME
 
@@ -58,12 +61,15 @@ This bundle provides the following plugins and bundles:
 	[Manifest]
 	[ConfirmRelease]
 	[UploadToCPAN]
-	[AutoPrereq]
+	[AutoPrereqs]
 	[@Git]
 	[NextRelease]
 	[GithubMeta]
 	[ReadmeFromPod]
 	[TestRelease]
+	[LoadTests]
+	[CheckChangesHasContent]
+	[DistManifestTests]
 
 =head1 INTERNAL METHODS
 
@@ -91,12 +97,15 @@ sub bundle_config {
 
 	my $prefix = 'Dist::Zilla::Plugin::';
 	my @extra = map { [ "$class/$prefix$_->[0]" => "$prefix$_->[0]" => $_->[1] ] } (
-		[ AutoPrereq          => { skip  => $arg->{auto_prereq_skip} } ],
-		[ MetaJSON            => {} ],
-		[ MinimumPerl         => {} ],
-		[ NextRelease         => {} ],
-		[ ReadmeFromPod       => {} ],
-		[ TestRelease         => {} ],
+		[ AutoPrereqs			=> { skip  => $arg->{auto_prereqs_skip} } ],
+		[ MetaJSON			=> {} ],
+		[ MinimumPerl			=> {} ],
+		[ NextRelease			=> {} ],
+		[ ReadmeFromPod			=> {} ],
+		[ LoadTests			=> {} ],
+		[ CheckChangesHasContent	=> {} ],
+		[ DistManifestTests		=> {} ],
+		[ TestRelease			=> {} ],
 	);
 
 	push (@plugins, @extra);
