@@ -17,7 +17,7 @@ use Dist::Zilla::Plugin::NextRelease;
 use Dist::Zilla::Plugin::GithubMeta;
 use Dist::Zilla::Plugin::TestRelease;
 use Dist::Zilla::Plugin::ReadmeFromPod;
-use Dist::Zilla::Plugin::LoadTests;
+use Dist::Zilla::Plugin::CompileTests;
 use Dist::Zilla::Plugin::CheckChangesHasContent;
 use Dist::Zilla::Plugin::DistManifestTests;
 
@@ -67,7 +67,7 @@ This bundle provides the following plugins and bundles:
 	[GithubMeta]
 	[ReadmeFromPod]
 	[TestRelease]
-	[LoadTests]
+	[CompileTests]
 	[CheckChangesHasContent]
 	[DistManifestTests]
 
@@ -102,7 +102,7 @@ sub bundle_config {
 		[ MinimumPerl			=> {} ],
 		[ NextRelease			=> {} ],
 		[ ReadmeFromPod			=> {} ],
-		[ LoadTests			=> {} ],
+		[ CompileTests			=> {} ],
 		[ CheckChangesHasContent	=> {} ],
 		[ DistManifestTests		=> {} ],
 		[ TestRelease			=> {} ],
