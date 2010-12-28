@@ -1,6 +1,9 @@
 Revision history for Dist-Zilla-PluginBundle-IDOPEREL
 
 {{$NEXT}}
+	- Added Plugin::LatestPrereqs
+
+0.3       2010-12-21 21:20:47 Asia/Jerusalem
 	- Removed the disappearing Plugin::LoadTests
 
 0.2       2010-11-16 12:46:38 Asia/Jerusalem
