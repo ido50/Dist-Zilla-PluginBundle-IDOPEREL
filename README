@@ -28,7 +28,7 @@ DESCRIPTION
             [NextRelease]
             [ReadmeFromPod]
             [TestRelease]
-            [LatestPrereqs]
+            [Signature]
 
 INTERNAL METHODS
   bundle_config

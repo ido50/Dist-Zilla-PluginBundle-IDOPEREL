@@ -1,6 +1,10 @@
 Revision history for Dist-Zilla-PluginBundle-IDOPEREL
 
 {{$NEXT}}
+	- Removed Plugin::LatestPrereqs as it's not ready yet (enforces core modules which is bad)
+	- Added Plugin::Signature
+
+0.4       2010-12-28 16:10:03 Asia/Jerusalem
 	- Added Plugin::LatestPrereqs
 
 0.3       2010-12-21 21:20:47 Asia/Jerusalem

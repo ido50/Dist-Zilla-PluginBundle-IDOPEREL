@@ -19,7 +19,7 @@ use Dist::Zilla::Plugin::TestRelease;
 use Dist::Zilla::Plugin::ReadmeFromPod;
 use Dist::Zilla::Plugin::CheckChangesHasContent;
 use Dist::Zilla::Plugin::DistManifestTests;
-use Dist::Zilla::Plugin::LatestPrereqs;
+use Dist::Zilla::Plugin::Signature;
 
 =head1 NAME
 
@@ -53,7 +53,7 @@ This bundle provides the following plugins and bundles:
 	[NextRelease]
 	[ReadmeFromPod]
 	[TestRelease]
-	[LatestPrereqs]
+	[Signature]
 
 =head1 INTERNAL METHODS
 
@@ -89,7 +89,7 @@ sub bundle_config {
 		[ CheckChangesHasContent	=> {} ],
 		[ DistManifestTests		=> {} ],
 		[ TestRelease			=> {} ],
-		[ LatestPrereqs			=> {} ],
+		[ Signature			=> {} ],
 	);
 
 	push (@plugins, @extra);
