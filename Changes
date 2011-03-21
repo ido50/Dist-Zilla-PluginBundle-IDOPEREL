@@ -1,6 +1,8 @@
 Revision history for Dist-Zilla-PluginBundle-IDOPEREL
 
 {{$NEXT}}
+
+v0.600.1  2011-03-22 00:00:41 Asia/Jerusalem
 	- Moved version declaration to same line as "use version", as per
 	  version's documentation
 	- Added Plugin::Prereqs in order to add the version module to the
