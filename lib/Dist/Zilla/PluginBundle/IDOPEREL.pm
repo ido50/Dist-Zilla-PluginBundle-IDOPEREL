@@ -1,8 +1,7 @@
 package Dist::Zilla::PluginBundle::IDOPEREL;
 
 BEGIN {
-	use version 0.77;
-	our $VERSION = version->declare("v0.600.0");
+	use version 0.77; our $VERSION = version->declare("v0.600.1");
 }
 
 use Moose;
@@ -20,6 +19,7 @@ use Dist::Zilla::Plugin::VersionFromModule;
 use Dist::Zilla::Plugin::MetaJSON;
 use Dist::Zilla::Plugin::MinimumPerl;
 use Dist::Zilla::Plugin::AutoPrereqs;
+use Dist::Zilla::Plugin::Prereqs;
 use Dist::Zilla::Plugin::NextRelease;
 use Dist::Zilla::Plugin::GithubMeta;
 use Dist::Zilla::Plugin::TestRelease;
@@ -66,6 +66,9 @@ This bundle provides the following plugins and bundles:
 	[Signature]
 	[VersionFromModule]
 
+	[Prereqs / ConfigureRequires]
+	version = 0.77
+
 =head1 INTERNAL METHODS
 
 =head2 bundle_config
@@ -94,6 +97,7 @@ sub bundle_config {
 	my @extra = map { [ "$class/$prefix$_->[0]" => "$prefix$_->[0]" => $_->[1] ] } (
 		[ VersionFromModule		=> {} ],
 		[ AutoPrereqs			=> { skip  => $arg->{auto_prereqs_skip} } ],
+		[ Prereqs			=> { version => 0.77 } ],
 		[ MetaJSON			=> {} ],
 		[ MinimumPerl			=> {} ],
 		[ NextRelease			=> {} ],

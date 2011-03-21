@@ -33,6 +33,9 @@ DESCRIPTION
             [Signature]
             [VersionFromModule]
 
+            [Prereqs / ConfigureRequires]
+            version = 0.77
+
 INTERNAL METHODS
   bundle_config
 AUTHOR
