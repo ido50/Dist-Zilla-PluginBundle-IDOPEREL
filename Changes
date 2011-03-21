@@ -1,6 +1,9 @@
 Revision history for Dist-Zilla-PluginBundle-IDOPEREL
 
 {{$NEXT}}
+	- Using Role::PluginBundle::Easy
+	- Fixed: Plugin::PkgVersion wasn't properly removed from the bundle
+	- Fixed: Plugin::Prereqs wasn't adding the 'version' module to configure_requires
 
 v0.600.1  2011-03-22 00:00:41 Asia/Jerusalem
 	- Moved version declaration to same line as "use version", as per
