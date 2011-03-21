@@ -17,18 +17,21 @@ DESCRIPTION
             [@Filter]
             -bundle = @Classic
             -remove = Readme
+            -remove = PkgVersion
 
             [AutoPrereqs]
             [CheckChangesHasContent]
             [DistManifestTests]
             [@Git]
             [GithubMeta]
+            [InstallGuide]
             [MetaJSON]
             [MinimumPerl]
             [NextRelease]
             [ReadmeFromPod]
             [TestRelease]
             [Signature]
+            [VersionFromModule]
 
 INTERNAL METHODS
   bundle_config

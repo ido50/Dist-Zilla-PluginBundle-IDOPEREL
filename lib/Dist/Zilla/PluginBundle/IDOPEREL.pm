@@ -1,8 +1,14 @@
 package Dist::Zilla::PluginBundle::IDOPEREL;
 
+BEGIN {
+	use version 0.77;
+	our $VERSION = version->declare("v0.600.0");
+}
+
 use Moose;
 use Moose::Autobox;
 use namespace::autoclean;
+
 with 'Dist::Zilla::Role::PluginBundle';
 
 # ABSTRACT: IDOPEREL's plugin bundle for Dist::Zilla.
@@ -10,6 +16,7 @@ with 'Dist::Zilla::Role::PluginBundle';
 use Dist::Zilla::PluginBundle::Filter;
 use Dist::Zilla::PluginBundle::Classic;
 use Dist::Zilla::PluginBundle::Git;
+use Dist::Zilla::Plugin::VersionFromModule;
 use Dist::Zilla::Plugin::MetaJSON;
 use Dist::Zilla::Plugin::MinimumPerl;
 use Dist::Zilla::Plugin::AutoPrereqs;
@@ -17,6 +24,7 @@ use Dist::Zilla::Plugin::NextRelease;
 use Dist::Zilla::Plugin::GithubMeta;
 use Dist::Zilla::Plugin::TestRelease;
 use Dist::Zilla::Plugin::ReadmeFromPod;
+use Dist::Zilla::Plugin::InstallGuide;
 use Dist::Zilla::Plugin::CheckChangesHasContent;
 use Dist::Zilla::Plugin::DistManifestTests;
 use Dist::Zilla::Plugin::Signature;
@@ -42,18 +50,21 @@ This bundle provides the following plugins and bundles:
 	[@Filter]
 	-bundle = @Classic
 	-remove = Readme
+	-remove = PkgVersion
 
 	[AutoPrereqs]
 	[CheckChangesHasContent]
 	[DistManifestTests]
 	[@Git]
 	[GithubMeta]
+	[InstallGuide]
 	[MetaJSON]
 	[MinimumPerl]
 	[NextRelease]
 	[ReadmeFromPod]
 	[TestRelease]
 	[Signature]
+	[VersionFromModule]
 
 =head1 INTERNAL METHODS
 
@@ -81,11 +92,13 @@ sub bundle_config {
 
 	my $prefix = 'Dist::Zilla::Plugin::';
 	my @extra = map { [ "$class/$prefix$_->[0]" => "$prefix$_->[0]" => $_->[1] ] } (
+		[ VersionFromModule		=> {} ],
 		[ AutoPrereqs			=> { skip  => $arg->{auto_prereqs_skip} } ],
 		[ MetaJSON			=> {} ],
 		[ MinimumPerl			=> {} ],
 		[ NextRelease			=> {} ],
 		[ ReadmeFromPod			=> {} ],
+		[ InstallGuide			=> {} ],
 		[ CheckChangesHasContent	=> {} ],
 		[ DistManifestTests		=> {} ],
 		[ TestRelease			=> {} ],
