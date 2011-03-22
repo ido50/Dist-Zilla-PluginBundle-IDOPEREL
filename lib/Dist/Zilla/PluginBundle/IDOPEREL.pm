@@ -1,7 +1,7 @@
 package Dist::Zilla::PluginBundle::IDOPEREL;
 
 BEGIN {
-	use version 0.77; our $VERSION = version->declare("v0.600.2");
+	use version 0.77; our $VERSION = version->declare("v0.600.3");
 }
 
 use Moose;
