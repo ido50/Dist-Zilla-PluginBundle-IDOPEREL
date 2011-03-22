@@ -1,15 +1,13 @@
 package Dist::Zilla::PluginBundle::IDOPEREL;
 
-BEGIN {
-	use version 0.77; our $VERSION = version->declare("v0.600.3");
-}
+# ABSTRACT: IDOPEREL's plugin bundle for Dist::Zilla.
 
 use Moose;
 use namespace::autoclean;
 
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 
-# ABSTRACT: IDOPEREL's plugin bundle for Dist::Zilla.
+use version 0.77; our $VERSION = qv("v0.600.4");
 
 use Dist::Zilla::PluginBundle::Filter;
 use Dist::Zilla::PluginBundle::Classic;

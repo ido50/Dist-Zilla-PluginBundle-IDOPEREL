@@ -2,13 +2,11 @@ package {{$name}};
 
 # ABSTRACT: [One line description of module's purpose here]
 
-BEGIN {
-	use version 0.77; our $VERSION = qv('0.0.1');
-}
-
 use warnings;
 use strict;
 use Carp;
+
+use version 0.77; our $VERSION = qv('0.0.1');
 
 =head1 NAME
 

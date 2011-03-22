@@ -1,7 +1,11 @@
 package Dist::Zilla::MintingProfile::IDOPEREL;
 
+# ABSTRACT: Wrapper for IDOPEREL's personal minting profile
+
 use Moose;
 with 'Dist::Zilla::Role::MintingProfile::ShareDir';
+
+use version 0.77; our $VERSION = qv("v0.600.4");
 
 =head1 NAME
 

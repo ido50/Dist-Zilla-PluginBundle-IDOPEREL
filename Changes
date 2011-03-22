@@ -1,6 +1,10 @@
 Revision history for Dist-Zilla-PluginBundle-IDOPEREL
 
 {{$NEXT}}
+	- Added version to MintingProfile::IDOPEREL and removed version declarations
+	  from the BEGIN block as it may have caused the CPAN indexer to fail.
+
+v0.600.3  2011-03-22 22:42:22 Asia/Jerusalem
 	- Created a default minting profile for usage with "dzil new"
 
 v0.600.2  2011-03-22 00:36:19 Asia/Jerusalem
