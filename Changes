@@ -1,6 +1,13 @@
 Revision history for Dist-Zilla-PluginBundle-IDOPEREL
 
 {{$NEXT}}
+	- Plugin::GithubMeta was mistakenly unused
+	- Changed "tag_format" and "tag_message" options for the Git bundle
+	- Not using "qv" to declare version numbers as it seems it is unrecommended
+	  by the version module
+	- Added a 00-load.t test
+
+v0.600.4  2011-03-22 23:34:10 Asia/Jerusalem
 	- Added version to MintingProfile::IDOPEREL and removed version declarations
 	  from the BEGIN block as it may have caused the CPAN indexer to fail.
 

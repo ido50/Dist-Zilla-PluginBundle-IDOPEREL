@@ -5,7 +5,7 @@ package Dist::Zilla::MintingProfile::IDOPEREL;
 use Moose;
 with 'Dist::Zilla::Role::MintingProfile::ShareDir';
 
-use version 0.77; our $VERSION = qv("v0.600.4");
+use version 0.77; our $VERSION = version->declare("v0.600.5");
 
 =head1 NAME
 

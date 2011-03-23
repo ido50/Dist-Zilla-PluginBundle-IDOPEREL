@@ -19,10 +19,18 @@ DESCRIPTION
             -remove = Readme
             -remove = PkgVersion
 
+            [@Git]
+            tag_format = %v
+            tag_message = %v
+
+            [VersionFromModule]
+
             [AutoPrereqs]
+            [Prereqs / ConfigureRequires]
+            version = 0.77
+
             [CheckChangesHasContent]
             [DistManifestTests]
-            [@Git]
             [GithubMeta]
             [InstallGuide]
             [MetaJSON]
@@ -31,10 +39,6 @@ DESCRIPTION
             [ReadmeFromPod]
             [TestRelease]
             [Signature]
-            [VersionFromModule]
-
-            [Prereqs / ConfigureRequires]
-            version = 0.77
 
 INTERNAL METHODS
   configure
