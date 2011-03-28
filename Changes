@@ -1,6 +1,9 @@
 Revision history for Dist-Zilla-PluginBundle-IDOPEREL
 
 {{$NEXT}}
+	- Not using "version" anymore, it's only causing problems
+
+v0.600.5  2011-03-23 23:21:39 Asia/Jerusalem
 	- Plugin::GithubMeta was mistakenly unused
 	- Changed "tag_format" and "tag_message" options for the Git bundle
 	- Not using "qv" to declare version numbers as it seems it is unrecommended

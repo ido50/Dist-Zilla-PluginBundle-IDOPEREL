@@ -6,7 +6,8 @@ use warnings;
 use strict;
 use Carp;
 
-use version 0.77; our $VERSION = version->declare('0.0.1');
+our $VERSION = "0.001";
+$VERSION = eval $VERSION;
 
 =head1 NAME
 
