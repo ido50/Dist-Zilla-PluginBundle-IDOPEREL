@@ -14,3 +14,4 @@
 ^pod2htm.*\.tmp$
 ^Dist-Zilla-PluginBundle-IDOPEREL-.*$
 ^\.build.*$
+^MYMETA\.(ya?ml|json)$

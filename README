@@ -20,15 +20,9 @@ DESCRIPTION
             -remove = PkgVersion
 
             [@Git]
-            tag_format = %v
-            tag_message = %v
 
             [VersionFromModule]
-
             [AutoPrereqs]
-            [Prereqs / ConfigureRequires]
-            version = 0.77
-
             [CheckChangesHasContent]
             [DistManifestTests]
             [GithubMeta]
