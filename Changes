@@ -1,6 +1,9 @@
 Revision history for Dist-Zilla-PluginBundle-IDOPEREL
 
 {{$NEXT}}
+	- Fixed bug with new version of Dist::Zilla::Plugin::AutoPrereqs causing it to fail
+
+0.700     2011-03-28 20:27:14 Asia/Jerusalem
 	- Not using "version" anymore, it's only causing problems
 
 v0.600.5  2011-03-23 23:21:39 Asia/Jerusalem

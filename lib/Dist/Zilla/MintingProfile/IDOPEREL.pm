@@ -5,7 +5,7 @@ package Dist::Zilla::MintingProfile::IDOPEREL;
 use Moose;
 with 'Dist::Zilla::Role::MintingProfile::ShareDir';
 
-our $VERSION = "0.700";
+our $VERSION = "0.701";
 $VERSION = eval $VERSION;
 
 =head1 NAME

@@ -7,7 +7,7 @@ use namespace::autoclean;
 
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 
-our $VERSION = "0.700";
+our $VERSION = "0.701";
 $VERSION = eval $VERSION;
 
 use Dist::Zilla::PluginBundle::Filter;
@@ -84,7 +84,7 @@ sub configure {
 	$self->add_plugins(
 		'VersionFromModule',
 
-		[ 'AutoPrereqs' => { skip => $self->payload->{auto_prereqs_skip} } ],
+		[ 'AutoPrereqs' => { skip => $self->payload->{auto_prereqs_skip} || [] } ],
 
 		'CheckChangesHasContent',
 		'DistManifestTests',
