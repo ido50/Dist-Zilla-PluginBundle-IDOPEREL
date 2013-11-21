@@ -7,11 +7,11 @@ use namespace::autoclean;
 
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 
-our $VERSION = "0.701";
+our $VERSION = "1.000000";
 $VERSION = eval $VERSION;
 
 use Dist::Zilla::PluginBundle::Filter;
-use Dist::Zilla::PluginBundle::Classic;
+use Dist::Zilla::PluginBundle::Basic;
 use Dist::Zilla::PluginBundle::Git;
 use Dist::Zilla::Plugin::VersionFromModule;
 use Dist::Zilla::Plugin::MetaJSON;
@@ -24,7 +24,7 @@ use Dist::Zilla::Plugin::TestRelease;
 use Dist::Zilla::Plugin::ReadmeFromPod;
 use Dist::Zilla::Plugin::InstallGuide;
 use Dist::Zilla::Plugin::CheckChangesHasContent;
-use Dist::Zilla::Plugin::DistManifestTests;
+use Dist::Zilla::Plugin::Test::DistManifest;
 use Dist::Zilla::Plugin::Signature;
 
 =head1 NAME
@@ -46,7 +46,7 @@ to install and use it.
 This bundle provides the following plugins and bundles:
 
 	[@Filter]
-	-bundle = @Classic
+	-bundle = @Basic
 	-remove = Readme
 	-remove = PkgVersion
 
@@ -55,8 +55,8 @@ This bundle provides the following plugins and bundles:
 	[VersionFromModule]
 	[AutoPrereqs]
 	[CheckChangesHasContent]
-	[DistManifestTests]
-	[GithubMeta]
+	[Test::DistManifest]
+	[GitHub::Meta]
 	[InstallGuide]
 	[MetaJSON]
 	[MinimumPerl]
@@ -75,8 +75,8 @@ sub configure {
 	my $self = shift;
 
 	$self->add_bundle(Filter => {
-		-bundle => '@Classic',
-		-remove => [qw/Readme PkgVersion/],
+		-bundle => '@Basic',
+		-remove => [qw/Readme MetaYAML/],
 	});
 
 	$self->add_bundle('Git');
@@ -87,8 +87,8 @@ sub configure {
 		[ 'AutoPrereqs' => { skip => $self->payload->{auto_prereqs_skip} || [] } ],
 
 		'CheckChangesHasContent',
-		'DistManifestTests',
-		'GithubMeta',
+		'Test::DistManifest',
+		'GitHub::Meta',
 		'InstallGuide',
 		'MetaJSON',
 		'MinimumPerl',
