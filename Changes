@@ -1,6 +1,8 @@
 Revision history for Dist-Zilla-PluginBundle-IDOPEREL
 
 {{$NEXT}}
+
+1.000000  2014-02-26 19:47:28+02:00 Asia/Jerusalem
 	- Replaced GithubMeta with GitHub::Meta
 	- Small changes to the minting profile
 
