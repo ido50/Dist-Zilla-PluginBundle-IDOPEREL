@@ -19,13 +19,14 @@ use Dist::Zilla::Plugin::MinimumPerl;
 use Dist::Zilla::Plugin::AutoPrereqs;
 use Dist::Zilla::Plugin::Prereqs;
 use Dist::Zilla::Plugin::NextRelease;
-use Dist::Zilla::Plugin::GithubMeta;
+use Dist::Zilla::Plugin::GitHub::Meta;
 use Dist::Zilla::Plugin::TestRelease;
 use Dist::Zilla::Plugin::ReadmeFromPod;
 use Dist::Zilla::Plugin::InstallGuide;
 use Dist::Zilla::Plugin::CheckChangesHasContent;
 use Dist::Zilla::Plugin::Test::DistManifest;
 use Dist::Zilla::Plugin::Signature;
+use Dist::Zilla::Plugin::Encoding;
 
 =head1 NAME
 
@@ -65,6 +66,10 @@ This bundle provides the following plugins and bundles:
 	[TestRelease]
 	[Signature]
 
+	[Encoding]
+	encoding = bytes
+	match = \.(jpg|png|gif|gz|zip)$
+
 =head1 INTERNAL METHODS
 
 =head2 configure
@@ -81,11 +86,14 @@ sub configure {
 
 	$self->add_bundle('Git');
 
-	$self->add_plugins(
-		'VersionFromModule',
+	my @plugins = ('VersionFromModule');
+	if ($self->payload->{auto_prereqs_skip}) {
+		push(@plugins, ['AutoPrereqs' => { skip => $self->payload->{auto_prereqs_skip} }]);
+	} else {
+		push(@plugins, 'AutoPrereqs');
+	}
 
-		[ 'AutoPrereqs' => { skip => $self->payload->{auto_prereqs_skip} || [] } ],
-
+	push(@plugins,
 		'CheckChangesHasContent',
 		'Test::DistManifest',
 		'GitHub::Meta',
@@ -95,8 +103,11 @@ sub configure {
 		'NextRelease',
 		'ReadmeFromPod',
 		'TestRelease',
-		'Signature'
+		'Signature',
+		[ 'Encoding' => { encoding => 'bytes', match => '\.(jpg|png|gif|gz|zip)$' } ]
 	);
+
+	$self->add_plugins(@plugins);
 }
 
 __PACKAGE__->meta->make_immutable;
@@ -140,7 +151,7 @@ L<http://search.cpan.org/dist/Dist-Zilla-PluginBundle-IDOPEREL/>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2010-2011 Ido Perlmuter.
+Copyright 2010-2014 Ido Perlmuter.
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of either: the GNU General Public License as published

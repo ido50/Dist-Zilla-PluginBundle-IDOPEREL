@@ -6,7 +6,7 @@ use warnings;
 use strict;
 use Carp;
 
-our $VERSION = "0.001";
+our $VERSION = "0.001000";
 $VERSION = eval $VERSION;
 
 =head1 NAME
