@@ -1,6 +1,8 @@
 Revision history for Dist-Zilla-PluginBundle-IDOPEREL
 
 {{$NEXT}}
+
+1.001000  2016-10-24 17:00:59+03:00 Asia/Jerusalem
       - Replaced ReadmeFromPod with ReadmeAnyFromPod and generate markdown
         readme files instead of plain text
       - Using CopyFilesFromBuild to copy README.md from build directory
