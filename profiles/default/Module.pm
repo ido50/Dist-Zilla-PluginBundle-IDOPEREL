@@ -28,7 +28,7 @@ $VERSION = eval $VERSION;
     Write a full description of the module and its features here.
     Use subsections (=head2, =head3) as appropriate.
 
-=head1 INTERFACE 
+=head1 INTERFACE
 
 =for author to fill in:
     Write a separate section listing the public components of the modules
@@ -74,7 +74,7 @@ $VERSION = eval $VERSION;
     files, and the meaning of any environment variables or properties
     that can be set. These descriptions must also include details of any
     configuration language used.
-  
+
 {{$name}} requires no configuration files or environment variables.
 
 =head1 DEPENDENCIES

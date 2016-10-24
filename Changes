@@ -1,6 +1,13 @@
 Revision history for Dist-Zilla-PluginBundle-IDOPEREL
 
 {{$NEXT}}
+      - Replaced ReadmeFromPod with ReadmeAnyFromPod and generate markdown
+        readme files instead of plain text
+      - Using CopyFilesFromBuild to copy README.md from build directory
+        to root directory
+      - Added PluginRemover and Config::Slicer roles to the bundle to allow
+        bundle customization
+      - Re-added MetaYAML for older toolchains that do not support MetaJSON
 
 1.000000  2014-02-26 19:47:28+02:00 Asia/Jerusalem
 	- Replaced GithubMeta with GitHub::Meta

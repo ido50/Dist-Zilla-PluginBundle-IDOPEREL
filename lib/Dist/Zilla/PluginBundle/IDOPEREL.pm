@@ -5,9 +5,11 @@ package Dist::Zilla::PluginBundle::IDOPEREL;
 use Moose;
 use namespace::autoclean;
 
-with 'Dist::Zilla::Role::PluginBundle::Easy';
+with 'Dist::Zilla::Role::PluginBundle::Easy',
+     'Dist::Zilla::Role::PluginBundle::PluginRemover',
+     'Dist::Zilla::Role::PluginBundle::Config::Slicer';
 
-our $VERSION = "1.000000";
+our $VERSION = "1.001000";
 $VERSION = eval $VERSION;
 
 use Dist::Zilla::PluginBundle::Filter;
@@ -21,7 +23,8 @@ use Dist::Zilla::Plugin::Prereqs;
 use Dist::Zilla::Plugin::NextRelease;
 use Dist::Zilla::Plugin::GitHub::Meta;
 use Dist::Zilla::Plugin::TestRelease;
-use Dist::Zilla::Plugin::ReadmeFromPod;
+use Dist::Zilla::Plugin::ReadmeAnyFromPod;
+use Dist::Zilla::Plugin::CopyFilesFromBuild;
 use Dist::Zilla::Plugin::InstallGuide;
 use Dist::Zilla::Plugin::CheckChangesHasContent;
 use Dist::Zilla::Plugin::Test::DistManifest;
@@ -46,29 +49,36 @@ to install and use it.
 
 This bundle provides the following plugins and bundles:
 
-	[@Filter]
-	-bundle = @Basic
-	-remove = Readme
-	-remove = PkgVersion
+      [@Filter]
+      -bundle = @Basic
+      -remove = Readme
 
-	[@Git]
+      [@Git]
 
-	[VersionFromModule]
-	[AutoPrereqs]
-	[CheckChangesHasContent]
-	[Test::DistManifest]
-	[GitHub::Meta]
-	[InstallGuide]
-	[MetaJSON]
-	[MinimumPerl]
-	[NextRelease]
-	[ReadmeFromPod]
-	[TestRelease]
-	[Signature]
+      [VersionFromModule]
+      [AutoPrereqs]
+      [CheckChangesHasContent]
+      [Test::DistManifest]
+      [GitHub::Meta]
+      [InstallGuide]
+      [MetaJSON]
+      [MinimumPerl]
+      [NextRelease]
+      [ReadmeFromPod]
+      [TestRelease]
+      [Signature]
 
-	[Encoding]
-	encoding = bytes
-	match = \.(jpg|png|gif|gz|zip)$
+      [ReadmeAnyFromPod]
+      type = markdown
+      filename = README.md
+      location = build
+
+      [CopyFilesFromBuild]
+      copy = README.md
+
+      [Encoding]
+      encoding = bytes
+      match = \.(jpg|png|gif|gz|zip)$
 
 =head1 INTERNAL METHODS
 
@@ -81,7 +91,7 @@ sub configure {
 
 	$self->add_bundle(Filter => {
 		-bundle => '@Basic',
-		-remove => [qw/Readme MetaYAML/],
+		-remove => [qw/Readme/],
 	});
 
 	$self->add_bundle('Git');
@@ -101,9 +111,10 @@ sub configure {
 		'MetaJSON',
 		'MinimumPerl',
 		'NextRelease',
-		'ReadmeFromPod',
 		'TestRelease',
 		'Signature',
+		[ 'ReadmeAnyFromPod' => { type => 'markdown', location => 'build', filename => 'README.md' } ],
+            [ 'CopyFilesFromBuild' => { copy => 'README.md' } ],
 		[ 'Encoding' => { encoding => 'bytes', match => '\.(jpg|png|gif|gz|zip)$' } ]
 	);
 
@@ -151,7 +162,7 @@ L<http://search.cpan.org/dist/Dist-Zilla-PluginBundle-IDOPEREL/>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2010-2014 Ido Perlmuter.
+Copyright 2010-2016 Ido Perlmuter.
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of either: the GNU General Public License as published
